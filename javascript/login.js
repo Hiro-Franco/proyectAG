@@ -41,7 +41,7 @@ async function login() {
     }
     sessionStorage.setItem('token', 'demo-token');
     sessionStorage.setItem('username', usuario.nombre);
-    window.location.href = './html/formulario.html';
+    window.location.href = 'formulario.html';
     return;
   }
 
@@ -62,7 +62,7 @@ async function login() {
 
     sessionStorage.setItem('token', data.token);
     sessionStorage.setItem('username', username);
-    window.location.href = './html/formulario.html';
+    window.location.href = 'formulario.html';
 
   } catch (err) {
     showError('No se pudo conectar con el servidor.');
@@ -84,4 +84,4 @@ document.getElementById('password').addEventListener('keydown', e => {
   if (e.key === 'Enter') login();
 });
 
-if (sessionStorage.getItem('token')) window.location.href = './html/formulario.html';
+if (sessionStorage.getItem('token')) window.location.href = 'formulario.html';

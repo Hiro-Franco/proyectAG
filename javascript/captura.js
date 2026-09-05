@@ -3,8 +3,8 @@ const API_BASE = 'http://localhost:5000';
 const token    = sessionStorage.getItem('token');
 const formData = JSON.parse(sessionStorage.getItem('formData') || 'null');
 
-if (!token)    window.location.href = './html/login.html';
-if (!formData) window.location.href = './html/formulario.html';
+if (!token)    window.location.href = 'login.html';
+if (!formData) window.location.href = 'formulario.html';
 
 const video          = document.getElementById('video');
 const canvas         = document.getElementById('canvas');
@@ -151,8 +151,8 @@ document.getElementById('btn-guardar').addEventListener('click', async () => {
   }
 });
 
-document.getElementById('btn-nueva').addEventListener('click', () => { window.location.href = './html/formulario.html'; });
-document.getElementById('btn-back').addEventListener('click',  () => { window.location.href = './html/formulario.html'; });
+document.getElementById('btn-nueva').addEventListener('click', () => { window.location.href = 'formulario.html'; });
+document.getElementById('btn-back').addEventListener('click',  () => { window.location.href = 'formulario.html'; });
 
 function mostrar(el) { el.classList.remove('hidden'); }
 function ocultar(el) { el.classList.add('hidden'); }

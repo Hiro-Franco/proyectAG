@@ -1,10 +1,10 @@
 let metodoPago = null;
 
-if (!sessionStorage.getItem('token')) window.location.href = './html/login.html';
+if (!sessionStorage.getItem('token')) window.location.href = 'login.html';
 
 document.getElementById('btn-logout').addEventListener('click', () => {
   sessionStorage.clear();
-  window.location.href = './html/login.html';
+  window.location.href = 'login.html';
 });
 
 window.setPago = function(btn) {
@@ -35,7 +35,7 @@ document.getElementById('btn-continuar').addEventListener('click', () => {
   };
 
   sessionStorage.setItem('formData', JSON.stringify(formData));
-  window.location.href = './html/captura.html';
+  window.location.href = 'captura.html';
 });
 
 function showError(msg) {
