@@ -1,0 +1,80 @@
+.capture-main { display: flex; flex-direction: column; min-height: calc(100vh - 54px); }
+
+.camera-wrap {
+  position: relative; width: 100%; background: #000;
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; min-height: 55vh;
+}
+#video { width: 100%; height: 100%; object-fit: cover; }
+
+.camera-overlay {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.camera-frame {
+  width: 80%; max-width: 340px; aspect-ratio: 3/2;
+  border: 2px solid rgba(246,244,236,0.85); border-radius: 10px;
+  box-shadow: 0 0 0 9999px rgba(0,0,0,0.4);
+}
+.camera-hint { color: rgba(246,244,236,0.9); font-size: 13px; margin-top: 14px; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
+
+.btn-capture {
+  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  width: 68px; height: 68px; border-radius: 50%; border: none;
+  background: transparent; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; padding: 0;
+}
+.btn-capture__ring { position: absolute; inset: 0; border-radius: 50%; border: 3px solid rgba(246,244,236,0.92); }
+.btn-capture__dot  { width: 52px; height: 52px; border-radius: 50%; background: #fff; transition: transform 0.1s ease; }
+.btn-capture:active .btn-capture__dot { transform: scale(0.88); }
+
+.preview-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 1.25rem 1rem; gap: 1rem; background: #000; min-height: calc(100vh - 54px);
+}
+#preview-img { width: 100%; max-width: 520px; border-radius: var(--radius-md); object-fit: contain; max-height: 65vh; }
+.preview-actions { display: flex; gap: 10px; width: 100%; max-width: 520px; }
+.preview-actions .btn-secondary,
+.preview-actions .btn-primary { flex: 1; width: auto; }
+
+.processing-wrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  flex: 1; padding: 2rem; min-height: calc(100vh - 54px);
+}
+.processing-text { font-size: 14px; color: var(--text-secondary); text-align: center; }
+
+.result-wrap { padding: 1.5rem 1rem 2.5rem; max-width: 600px; margin: 0 auto; width: 100%; }
+
+/* Los datos que salen del OCR se muestran en monoespaciada: son campos
+   de factura (N°, CUIT, importes) y la tipografía de "planilla" ayuda
+   a distinguirlos de un dato tipeado a mano y a leer los números sin
+   ambigüedad (1 vs l, 0 vs O). */
+.ocr-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; margin-bottom: 4px; }
+.ocr-item label { display: block; font-size: 11px; font-weight: 500; color: var(--text-hint); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+.ocr-item input {
+  width: 100%; font-size: 13.5px; font-family: var(--font-mono);
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 6px 9px; background: var(--surface-sunken); color: var(--text-primary); outline: none;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.ocr-item input:focus { border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 2px rgba(47,74,58,0.1); }
+
+.form-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 16px; font-size: 13px; }
+.form-summary-item label { font-size: 11px; font-weight: 500; color: var(--text-hint); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 2px; }
+
+.success-wrap {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-height: calc(100vh - 54px); padding: 2rem 1.5rem; text-align: center;
+}
+.success-icon {
+  width: 80px; height: 80px; background: var(--success-bg); color: var(--success);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem;
+}
+.success-title { font-family: var(--font-display); font-size: 23px; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 8px; }
+.success-sub { font-size: 14px; color: var(--text-secondary); margin-bottom: 1.85rem; max-width: 260px; }
+.success-wrap .btn-primary { width: auto; padding: 12px 30px; }
+
+@media (max-width: 420px) {
+  .ocr-grid, .form-summary { grid-template-columns: 1fr; }
+}
